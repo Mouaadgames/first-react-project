@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+// import { useState } from 'react'
+import { useState } from "react"
+import ColorInputField from "./components/ColorInputField"
+import SquarColor from "./components/SquarColor"
+import ToggleButton from "./components/ToggleButton"
 function App() {
-  const [count, setCount] = useState(0)
+  const [color, setColor] = useState("")
+  const [theme, setTheme] = useState("black");
+  function toggle() {
+    setTheme(theme === "black" ? "white" : "black")
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="grid justify-center items-center h-[100vh]">
+      <main>
+        <SquarColor
+          color={color}
+          theam={theme}
+        />
+        <ColorInputField
+          color={color}
+          setColor={setColor}
+        />
+        <ToggleButton
+          toggle={toggle}
+        />
+      </main>
+    </div>
   )
 }
 
